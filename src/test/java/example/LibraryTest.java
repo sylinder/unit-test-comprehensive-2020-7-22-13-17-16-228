@@ -26,7 +26,7 @@ class LibraryTest {
     @DisplayName("someLibraryMethod should return 'true'")
     void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
-        Assertions.assertTrue(classUnderTest.someLibraryMethod());
+        assertTrue(classUnderTest.someLibraryMethod());
     }
 
     @Test
@@ -85,5 +85,14 @@ class LibraryTest {
             // Simulate task that takes more than 10 ms.
             Thread.sleep(100);
         });
+    }
+
+    @Test
+    public void should_return_4A0B_when_guess_given_1234() {
+        int[] answer = {1, 2, 3, 4};
+        int[] givenNumber = {1, 2, 3, 4};
+        GuessNumber guessNumber = new GuessNumber();
+        String result = guessNumber.guess(answer, givenNumber);
+        Assertions.assertEquals("4A0B", result);
     }
 }
