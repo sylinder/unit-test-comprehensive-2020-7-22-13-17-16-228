@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 public class GuessNumber {
     public String guess(int[] answer, int[] givenNumber) {
+
+        if (givenNumber.length != answer.length) {
+            return "Wrong Input，Input again";
+        }
+
         HashMap<Integer, Integer> givenNumberItemToCount = new HashMap<>();
         for (int item : givenNumber) {
             givenNumberItemToCount.put(item, givenNumberItemToCount.getOrDefault(item, 0) + 1);
