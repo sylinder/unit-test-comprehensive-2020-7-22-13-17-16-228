@@ -104,4 +104,13 @@ class LibraryTest {
         String result = guessNumber.guess(answer, givenNumber);
         Assertions.assertEquals("1A0B", result);
     }
+
+    @Test
+    public void should_return_0A2B_when_guess_given_2478() {
+        int[] answer = {1, 2, 3, 4};
+        int[] givenNumber = {2, 4, 7, 8};
+        GuessNumber guessNumber = new GuessNumber();
+        String result = guessNumber.guess(answer, givenNumber);
+        Assertions.assertEquals("0A2B", result);
+    }
 }
