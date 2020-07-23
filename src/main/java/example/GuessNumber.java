@@ -4,19 +4,8 @@ import java.util.HashMap;
 
 public class GuessNumber {
     public String guess(int[] answer, int[] givenNumber) {
-
-        if (givenNumber.length != answer.length) {
+        if(!isInputValid(answer, givenNumber)) {
             return "Wrong Input，Input again";
-        }
-
-        HashMap<Integer, Integer> givenNumberItemToCount = new HashMap<>();
-        for (int item : givenNumber) {
-            givenNumberItemToCount.put(item, givenNumberItemToCount.getOrDefault(item, 0) + 1);
-        }
-        for (int item : givenNumberItemToCount.keySet()) {
-            if (givenNumberItemToCount.get(item) > 1) {
-                return "Wrong Input，Input again";
-            }
         }
 
         HashMap<Integer, Integer> answerItemToIndex = new HashMap<>();
@@ -37,5 +26,24 @@ public class GuessNumber {
         }
         return String.format("%dA%dB",countCorrectPosition, wrongPositionCorrectNumber);
 
+    }
+
+    public boolean isInputValid(int[] answer, int[] givenNumber) {
+        if (answer == null || givenNumber == null) {
+            return false;
+        }
+
+        if (givenNumber.length != answer.length) {
+            return false;
+        }
+
+        HashMap<Integer, Integer> givenNumberItemToCount = new HashMap<>();
+        for (int item : givenNumber) {
+            if (givenNumberItemToCount.containsKey((item))) {
+                return false;
+            }
+            givenNumberItemToCount.put(item, 1);
+        }
+        return true;
     }
 }
