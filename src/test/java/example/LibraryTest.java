@@ -140,4 +140,14 @@ class LibraryTest {
         String result = guessNumber.guess(answer, givenNumber);
         Assertions.assertEquals("0A4B", result);
     }
+
+
+    @Test
+    public void should_return_wrong_input_when_guess_given_1123() {
+        int[] answer = {1, 2, 3, 4};
+        int[] givenNumber = {1, 1, 2, 3};
+        GuessNumber guessNumber = new GuessNumber();
+        String result = guessNumber.guess(answer, givenNumber);
+        Assertions.assertEquals("Wrong Input，Input again", result);
+    }
 }
