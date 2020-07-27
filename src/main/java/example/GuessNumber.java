@@ -3,8 +3,18 @@ package example;
 import java.util.HashMap;
 
 public class GuessNumber {
-    public String guess(int[] answer, int[] givenNumber) {
-        if(!isInputValid(answer, givenNumber)) {
+    private int[] answer;
+
+    public GuessNumber(int[] answer) {
+        this.answer = answer;
+    }
+
+    public GuessNumber(GenerateNumber generateNumber) {
+        this.answer = generateNumber.getAnswer();
+    }
+
+    public String guess(int[] givenNumber) {
+        if(!isInputValid(givenNumber)) {
             return "Wrong Input，Input again";
         }
 
@@ -28,7 +38,7 @@ public class GuessNumber {
 
     }
 
-    public boolean isInputValid(int[] answer, int[] givenNumber) {
+    public boolean isInputValid(int[] givenNumber) {
         if (answer == null || givenNumber == null) {
             return false;
         }
