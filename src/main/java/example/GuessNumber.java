@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class GuessNumber {
     private int[] answer;
+    private static final String ERROR_MESSAGE = "Wrong Input，Input again";
 
     public GuessNumber(GenerateNumber generateNumber) {
         this.answer = generateNumber.getAnswer();
@@ -11,7 +12,7 @@ public class GuessNumber {
 
     public String guess(int[] givenNumber) {
         if(!isInputValid(givenNumber)) {
-            return "Wrong Input，Input again";
+            return ERROR_MESSAGE;
         }
 
         HashMap<Integer, Integer> answerItemToIndex = new HashMap<>();
