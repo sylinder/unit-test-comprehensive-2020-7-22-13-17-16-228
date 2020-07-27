@@ -14,25 +14,29 @@ public class GuessNumber {
         if(!isInputValid(givenNumber)) {
             return ERROR_MESSAGE;
         }
+        int[] result = countAandB(givenNumber);
+        return String.format("%dA%dB",result[0], result[1]);
 
+    }
+
+    public int[] countAandB(int[] givenNumber) {
         HashMap<Integer, Integer> answerItemToIndex = new HashMap<>();
         for (int index = 0; index < answer.length; index++) {
             answerItemToIndex.put(answer[index], index);
         }
 
-        int countCorrectPosition = 0;
-        int wrongPositionCorrectNumber = 0;
+        int countOfA = 0;
+        int countOfB = 0;
         for (int index = 0; index < givenNumber.length; index++) {
             if (answerItemToIndex.containsKey(givenNumber[index])) {
                 if (answerItemToIndex.get(givenNumber[index]) == index) {
-                    countCorrectPosition++;
+                    countOfA++;
                 } else {
-                    wrongPositionCorrectNumber++;
+                    countOfB++;
                 }
             }
         }
-        return String.format("%dA%dB",countCorrectPosition, wrongPositionCorrectNumber);
-
+        return new int[] {countOfA, countOfB};
     }
 
     public boolean isInputValid(int[] givenNumber) {
