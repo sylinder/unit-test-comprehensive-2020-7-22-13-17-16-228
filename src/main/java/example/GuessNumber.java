@@ -5,10 +5,6 @@ import java.util.HashMap;
 public class GuessNumber {
     private int[] answer;
 
-    public GuessNumber(int[] answer) {
-        this.answer = answer;
-    }
-
     public GuessNumber(GenerateNumber generateNumber) {
         this.answer = generateNumber.getAnswer();
     }
