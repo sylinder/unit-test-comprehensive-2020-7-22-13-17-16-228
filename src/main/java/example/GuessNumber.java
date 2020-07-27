@@ -1,6 +1,8 @@
 package example;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class GuessNumber {
     private int[] answer;
@@ -37,6 +39,7 @@ public class GuessNumber {
         return new int[] {countOfA, countOfB};
     }
 
+
     public boolean isInputValid(int[] givenNumber) {
         if (answer == null || givenNumber == null) {
             return false;
@@ -45,13 +48,13 @@ public class GuessNumber {
         if (givenNumber.length != answer.length) {
             return false;
         }
-
-        HashMap<Integer, Integer> givenNumberItemToCount = new HashMap<>();
+        
+        Set<Integer> set = new HashSet<>();
         for (int item : givenNumber) {
-            if (givenNumberItemToCount.containsKey((item))) {
+            if (set.contains(item)) {
                 return false;
             }
-            givenNumberItemToCount.put(item, 1);
+            set.add(item);
         }
         return true;
     }
