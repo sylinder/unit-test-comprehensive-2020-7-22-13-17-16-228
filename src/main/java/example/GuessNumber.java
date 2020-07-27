@@ -28,12 +28,10 @@ public class GuessNumber {
         int countOfA = 0;
         int countOfB = 0;
         for (int index = 0; index < givenNumber.length; index++) {
-            if (answerItemToIndex.containsKey(givenNumber[index])) {
-                if (answerItemToIndex.get(givenNumber[index]) == index) {
-                    countOfA++;
-                } else {
-                    countOfB++;
-                }
+            if (answerItemToIndex.containsKey(givenNumber[index]) && answerItemToIndex.get(givenNumber[index]) == index) {
+                countOfA++;
+            } else if (answerItemToIndex.containsKey(givenNumber[index]) && answerItemToIndex.get(givenNumber[index]) != index) {
+                countOfB++;
             }
         }
         return new int[] {countOfA, countOfB};
